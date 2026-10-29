@@ -14,8 +14,8 @@ jobs:
       - run: cargo build --release
       - uses: actions/upload-artifact@v4
         with:
-          name: Deverrouilleur-Excel-Windows
-          path: target/release/xlsx-deverrouilleur.exe
+          name: Delocker-Windows
+          path: target/release/delocker.exe
 
   macos:
     runs-on: macos-latest
@@ -30,12 +30,12 @@ jobs:
           cargo build --release --target x86_64-apple-darwin
       - name: Create universal .app bundle
         run: |
-          APP="Deverrouilleur Excel.app"
+          APP="Delocker.app"
           mkdir -p "$APP/Contents/MacOS"
           lipo -create \
-            target/aarch64-apple-darwin/release/xlsx-deverrouilleur \
-            target/x86_64-apple-darwin/release/xlsx-deverrouilleur \
-            -output "$APP/Contents/MacOS/xlsx-deverrouilleur"
+            target/aarch64-apple-darwin/release/delocker \
+            target/x86_64-apple-darwin/release/delocker \
+            -output "$APP/Contents/MacOS/delocker"
           cat > "$APP/Contents/Info.plist" <<'PLIST'
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -43,8 +43,8 @@ jobs:
           <dict>
             <key>CFBundleName</key><string>Delocker</string>
             <key>CFBundleDisplayName</key><string>Delocker</string>
-            <key>CFBundleIdentifier</key><string>fr.deverrouilleur.excel</string>
-            <key>CFBundleExecutable</key><string>xlsx-deverrouilleur</string>
+            <key>CFBundleIdentifier</key><string>fr.delocker</string>
+            <key>CFBundleExecutable</key><string>delocker</string>
             <key>CFBundlePackageType</key><string>APPL</string>
             <key>CFBundleVersion</key><string>1.0</string>
             <key>NSHighResolutionCapable</key><true/>
@@ -58,8 +58,8 @@ jobs:
           PLIST
           # Signature ad hoc (sans compte développeur Apple)
           codesign --force --deep --sign - "$APP"
-          ditto -c -k --keepParent "$APP" Deverrouilleur-Excel-macOS.zip
+          ditto -c -k --keepParent "$APP" Delocker-macOS.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: Deverrouilleur-Excel-macOS
-          path: Deverrouilleur-Excel-macOS.zip
+          name: Delocker-macOS
+          path: Delocker-macOS.zip
