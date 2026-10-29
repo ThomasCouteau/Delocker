@@ -87,7 +87,7 @@ impl App {
         let survol = ctx.input(|i| !i.raw.hovered_files.is_empty());
 
         ui.add_space(8.0);
-        ui.heading("Déverrouilleur Excel");
+        ui.heading("Delocker");
         ui.label("Retire la protection des feuilles : formules et mise en forme conservées.");
         ui.add_space(10.0);
 
@@ -179,7 +179,7 @@ fn main() -> eframe::Result {
         ..Default::default()
     };
     eframe::run_native(
-        "Déverrouilleur Excel",
+        "Delocker",
         options,
         Box::new(|cc| {
             let app = App::default();
