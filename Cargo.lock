@@ -322,6 +322,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
 
 [[package]]
+name = "delocker"
+version = "0.1.0"
+dependencies = [
+ "eframe",
+ "regex",
+ "rfd",
+ "zip",
+]
+
+[[package]]
 name = "dispatch"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2548,16 +2558,6 @@ name = "xkeysym"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b9cc00251562a284751c9973bace760d86c0276c471b4be569fe6b068ee97a56"
-
-[[package]]
-name = "xlsx-deverrouilleur"
-version = "0.1.0"
-dependencies = [
- "eframe",
- "regex",
- "rfd",
- "zip",
-]
 
 [[package]]
 name = "xml-rs"

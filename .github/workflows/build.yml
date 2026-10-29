@@ -43,7 +43,7 @@ jobs:
           <dict>
             <key>CFBundleName</key><string>Delocker</string>
             <key>CFBundleDisplayName</key><string>Delocker</string>
-            <key>CFBundleIdentifier</key><string>fr.delocker</string>
+            <key>CFBundleIdentifier</key><string>fr.delocker.app</string>
             <key>CFBundleExecutable</key><string>delocker</string>
             <key>CFBundlePackageType</key><string>APPL</string>
             <key>CFBundleVersion</key><string>1.0</string>

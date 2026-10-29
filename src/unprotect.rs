@@ -42,17 +42,17 @@ fn a_nettoyer(nom: &str) -> bool {
             || nom.starts_with("xl/chartsheets/"))
 }
 
-/// Chemin de sortie : `nom_deverrouille.xlsx` à côté du fichier source,
+/// Chemin de sortie : `nom_delocked.xlsx` à côté du fichier source,
 /// sans jamais écraser un fichier existant.
 pub fn chemin_sortie(src: &Path) -> PathBuf {
     let dossier = src.parent().unwrap_or_else(|| Path::new("."));
     let nom = src.file_stem().and_then(|s| s.to_str()).unwrap_or("fichier");
     let ext = src.extension().and_then(|s| s.to_str()).unwrap_or("xlsx");
 
-    let mut candidat = dossier.join(format!("{nom}_deverrouille.{ext}"));
+    let mut candidat = dossier.join(format!("{nom}_delocked.{ext}"));
     let mut n = 2;
     while candidat.exists() {
-        candidat = dossier.join(format!("{nom}_deverrouille_{n}.{ext}"));
+        candidat = dossier.join(format!("{nom}_delocked_{n}.{ext}"));
         n += 1;
     }
     candidat
@@ -157,7 +157,7 @@ mod tests {
         let dir = std::env::temp_dir().join("xlsx_deverr_test");
         std::fs::create_dir_all(&dir).unwrap();
         let src = dir.join("test.xlsx");
-        let _ = std::fs::remove_file(dir.join("test_deverrouille.xlsx"));
+        let _ = std::fs::remove_file(dir.join("test_delocked.xlsx"));
         xlsx_protege(&src);
 
         let r = deverrouiller(&src).unwrap();

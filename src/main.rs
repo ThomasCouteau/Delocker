@@ -146,7 +146,7 @@ impl App {
                     Etat::Ok { sortie, retirees } => {
                         ui.colored_label(egui::Color32::from_rgb(60, 170, 90), "✔");
                         let sortie_nom = sortie.file_name().and_then(|n| n.to_str()).unwrap_or("?");
-                        let info = if *retirees == 0 { "aucune protection trouvée" } else { "déverrouillé" };
+                        let info = if *retirees == 0 { "aucune protection trouvée" } else { "delocké" };
                         ui.label(format!("{nom} → {sortie_nom} ({info})"));
                     }
                     Etat::Erreur(e) => {
@@ -159,7 +159,7 @@ impl App {
 
         if lignes.is_empty() {
             ui.add_space(4.0);
-            ui.weak("Chaque fichier donne un nouveau fichier « …_deverrouille.xlsx » à côté de l'original.");
+            ui.weak("Chaque fichier donne un nouveau fichier « …_delocked.xlsx » à côté de l'original.");
         }
     }
 }
