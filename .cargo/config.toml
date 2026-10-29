@@ -1,0 +1,3 @@
+# Windows : runtime C intégré à l'exe, rien à installer côté utilisateur
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
